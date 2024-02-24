@@ -12,7 +12,7 @@ def process_audio_async(audio_content):
 async def identify_song(path):
     print("identificando canción")
     shazam = Shazam()
-    out = await shazam.recognize_song(f"{path}")
+    out = await shazam.recognize(f"{path}")
     if os.path.exists(path):
         os.remove(path)
     return out
@@ -21,7 +21,7 @@ async def identify_song(path):
 async def split_session_recognize(audio):
     audio_length = len(audio)
 
-    segment_duration = 60 * 1000
+    segment_duration = 30 * 1000
 
     song_list = []
 
